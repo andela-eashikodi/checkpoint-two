@@ -3,15 +3,12 @@
 var result;
 
 String.prototype.hasVowels = function(){
-  if(/[aeiou]/.test(this)){
-    return true;
-  }
-  else {
-    return false;
-  }
+  //this regEx (regular expression) checks if string has vowels
+  return (/[aeiou]/.test(this));
 };
 
 String.prototype.toUpper = function(){
+  // this regEx replaces every letter to uppercase value
   result = this.replace(/[a-z]/g, function(x){
     return x.toUpperCase();
   });
@@ -19,6 +16,7 @@ String.prototype.toUpper = function(){
 };
 
 String.prototype.toLower = function(){
+  // this regEx replaces every letter to lowercase value
   result = this.replace(/[A-Z]/g, function(x){
     return x.toLowerCase();
   });
@@ -26,6 +24,7 @@ String.prototype.toLower = function(){
 };
 
 String.prototype.ucFirst = function(){
+  // this regEx replaces the first letter to uppercase value
   result = this.replace(/^\w/g, function(x){
     return x.toUpperCase();
   });
@@ -33,20 +32,17 @@ String.prototype.ucFirst = function(){
 };
 
 String.prototype.isQuestion = function(){
-  if(/\?$/.test(this)){
-    return true;
-  }
-  else {
-    return false;
-  }
+  // this regEx checks if string ends with a question mark
+  return (/\?$/.test(this));
 };
 
 String.prototype.words = function(){
-  var arr = [];
+  var wordsCollection = [];
+  // this regEx checks for word in any sentence
   this.toString().replace(/\b\w+\b/gi, function(x){
-    arr.push(x);
+    wordsCollection.push(x);
   });
-  return arr;
+  return wordsCollection;
 };
 
 String.prototype.wordCount = function(){
@@ -56,11 +52,13 @@ String.prototype.wordCount = function(){
 
 String.prototype.toCurrency = function(){
   var splitNum = this.split(".");
+  // this regEx inserts a comma after counting three digits from behind
   var numCurrency = splitNum[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ("." + splitNum[1]);
   return numCurrency;
 };
 
 String.prototype.fromCurrency = function(){
+  //this regEx removes comma in the currency value
   var num = this.replace(/\,/g, "");
   return parseFloat(num);
 };
